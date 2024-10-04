@@ -1,6 +1,6 @@
 const useFetchData = async () => {
     
-    const query = await fetch(`https://dummyjson.com/products?limit=10&skip=10page}`);
+    const query = await fetch(`https://dummyjson.com/products?limit=10&skip=10`);
     const response = await query.json();
     const data = response.products
 
