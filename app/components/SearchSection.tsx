@@ -20,10 +20,10 @@ export default function SearchSection({ sendDataSearch }: Tprops) {
 
     const HandleSelect = async (select: string) => {
         setSelect(select)
-        if (select != '') {
+        // if (select != '') {
             const { data } = await useFetchCategorieData(select)
             sendDataSearch(data)
-        }
+        // }
     }
 
     useEffect(() => {
