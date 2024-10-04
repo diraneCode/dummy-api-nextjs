@@ -23,14 +23,20 @@ export default function Tbody({data}: Tprops){
                     <td align="center">{product.id}</td>
                     <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                         <div className="size-10 rounded-full shadow shadow-slate-400">
-                            <Image width={1000} height={1000} className="w-full h-full rounded-full" src={product.images[0]} alt={product.images} />
+                            <Image 
+                                width={1000} 
+                                height={1000} 
+                                className="w-full h-full rounded-full object-contain"
+                                src={product.images[0]} 
+                                alt={product.images}
+                             />
                         </div>
                     </th>
                     <td align="center" className="px-6 py-4">
                         {product.title}
                     </td>
                     <td align="center" className="px-6 py-4 font-bold">
-                        {product.price}
+                        {product.price} $
                     </td>
                     <td align="center" className="px-6 py-4">
                         {product.category}

@@ -1,6 +1,6 @@
 const useFetchData = async () => {
     
-    const query = await fetch(`https://dummyjson.com/products?limit=10&skip=10`);
+    const query = await fetch(`https://dummyjson.com/products?limit=10`);
     const response = await query.json();
     const data = response.products
 
@@ -27,11 +27,29 @@ const useFetchSearchData = async (search: string) => {
 }
 
 
+const useFetchCategorie = async () => {
+    
+    const query = await fetch('https://dummyjson.com/products/category-list');
+    const response = await query.json();
+    const data = response
 
+    return { data }
+}
+
+const useFetchCategorieData = async (categorie: string) => {
+    
+    const query = await fetch(`https://dummyjson.com/products/category/${categorie}?limit=10`);
+    const response = await query.json();
+    const data = response.products
+
+    return { data }
+}
 
 
 export {
     useFetchData,
     useFetchOneData,
     useFetchSearchData,
+    useFetchCategorie,
+    useFetchCategorieData,
 };

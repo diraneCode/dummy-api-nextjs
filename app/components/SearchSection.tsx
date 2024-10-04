@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { product } from "../types/product"
-import { useFetchSearchData } from "../hooks/useProduct"
+import { useFetchCategorie, useFetchCategorieData, useFetchSearchData } from "../hooks/useProduct"
 
 type Tprops = {
     sendDataSearch: (data: product[]) => void
@@ -8,6 +8,9 @@ type Tprops = {
 
 export default function SearchSection({ sendDataSearch }: Tprops) {
     const [search, setSearch] = useState<string>("")
+    const [categorie, setCategorie] = useState([]);
+    const [select, setSelect] = useState<string>("");
+
 
     const HandleSearch = async (search:string) => {
         setSearch(search)
@@ -15,14 +18,36 @@ export default function SearchSection({ sendDataSearch }: Tprops) {
         sendDataSearch(data)
     }
 
+    const HandleSelect = async (select: string) => {
+        setSelect(select)
+        const { data } = await useFetchCategorieData(select)
+        sendDataSearch(data)
+    }
+
+    useEffect(() => {
+        const GetCategories = async () => {
+            const { data } = await useFetchCategorie();
+            setCategorie(data)
+        }
+        GetCategories()
+    },[])
+
     return (
         <div className="flex items-center justify-between flex-column md:flex-row flex-wrap space-y-4 px-5 md:space-y-0 py-4 bg-white dark:bg-gray-900">
             <div>
-                <label htmlFor="default" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Trier</label>
-                <select id="default" className="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>---Selectionner---</option>
-                    <option value="asc">Moin couteux</option>
-                    <option value="desc">Plus couteux</option>
+                <label htmlFor="default" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Trier par categorie</label>
+                <select 
+                    id="default" 
+                    value={select}
+                    onChange={(e) => HandleSelect(e.target.value)}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                    <option selected>---Selectionner une categorie---</option>
+                    {
+                        categorie.map((cat, index) => (
+                            <option key={index} value={cat}>{cat}</option>
+                        ))
+                    }
                 </select>
             </div>
             <label htmlFor="table-search" className="sr-only">Search</label>

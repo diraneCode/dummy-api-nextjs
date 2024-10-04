@@ -49,13 +49,13 @@ export default function BtnView({id} : Tprops) {
                         height={1000}
                         src={data?.images[0]}
                         alt={data?.title}
-                        className="w-full h-full bg-cover"
+                        className="w-full h-full object-contain"
                       />
                     </div>
                     <div className="flex flex-col space-y-2">
                       <div>
                         <span className="text-gray-700">Prix :</span>
-                        <span className="text-lg font-bold">{data?.price}</span>
+                        <span className="text-lg font-bold">{data?.price} $</span>
                       </div>
                       <div>
                         <span className="text-gray-700">Stock :</span>
