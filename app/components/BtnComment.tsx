@@ -1,17 +1,13 @@
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
-  import { FaEye } from "react-icons/fa"
-  import { useEffect, useState } from "react"
+  import { useState } from "react"
   import { product } from "../types/product"
   import { useFetchOneData } from "../hooks/useProduct"
-  import Image from "next/image"
   import Loading from "./Loading"
   import { FaMessage } from "react-icons/fa6"
 import Chat from "./Chat"
@@ -23,7 +19,7 @@ import Chat from "./Chat"
   export default function BtnComment({id} : Tprops) {
     const [data, setData] = useState<product>()
   
-    const showProduct = async () => {
+    const ShowProduct = async () => {
       const { data } = await useFetchOneData(id)
       setData(data)
     }
@@ -32,7 +28,7 @@ import Chat from "./Chat"
       <Dialog>
         <DialogTrigger 
           asChild   
-          onClick={showProduct}
+          onClick={ShowProduct}
           className="flex items-center justify-center"
         >
             <FaMessage color="#9d6cf8" size={14} />

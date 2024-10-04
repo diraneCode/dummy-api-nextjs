@@ -1,6 +1,6 @@
 const useFetchData = async () => {
-
-    const query = await fetch('https://dummyjson.com/products?limit=10');
+    
+    const query = await fetch(`https://dummyjson.com/products?limit=10&skip=10page}`);
     const response = await query.json();
     const data = response.products
 
@@ -17,8 +17,21 @@ const useFetchOneData = async (id: number) => {
     return { data }
 }
 
+const useFetchSearchData = async (search: string) => {
+
+    const query = await fetch(`https://dummyjson.com/products/search?q=${search}&limit=10`);
+    const response = await query.json();
+    const data = response.products
+
+    return { data }
+}
+
+
+
+
 
 export {
     useFetchData,
     useFetchOneData,
+    useFetchSearchData,
 };

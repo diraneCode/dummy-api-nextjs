@@ -29,11 +29,14 @@ export default function Tbody({data}: Tprops){
                     <td align="center" className="px-6 py-4">
                         {product.title}
                     </td>
-                    <td align="center" className="px-6 py-4">
-                        {product.stock}
+                    <td align="center" className="px-6 py-4 font-bold">
+                        {product.price}
                     </td>
                     <td align="center" className="px-6 py-4">
                         {product.category}
+                    </td>
+                    <td align="center" className="px-6 py-4">
+                        {product.stock}
                     </td>
                     <td align="center" className="px-6 py-4 flex items-center justify-center space-x-2">
                         <BtnView id={product.id} />

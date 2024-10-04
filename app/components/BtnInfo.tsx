@@ -20,7 +20,7 @@ import Barcode from "react-barcode"
   export default function BtnInfo({id} : Tprops) {
     const [data, setData] = useState<product>()
   
-    const showProduct = async () => {
+    const ShowProduct = async () => {
       const { data } = await useFetchOneData(id)
       setData(data)
       console.log(data)
@@ -30,7 +30,7 @@ import Barcode from "react-barcode"
       <Dialog>
         <DialogTrigger 
           asChild   
-          onClick={showProduct}
+          onClick={ShowProduct}
           className="flex items-center justify-center"
         >
             <FaInfoCircle color="gray" size={17} />

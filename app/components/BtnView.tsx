@@ -2,13 +2,12 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { FaEye } from "react-icons/fa"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { product } from "../types/product"
 import { useFetchOneData } from "../hooks/useProduct"
 import Image from "next/image"
@@ -21,7 +20,7 @@ type Tprops = {
 export default function BtnView({id} : Tprops) {
   const [data, setData] = useState<product>()
 
-  const showProduct = async () => {
+  const ShowProduct = async () => {
     const { data } = await useFetchOneData(id)
     setData(data)
   }
@@ -30,7 +29,7 @@ export default function BtnView({id} : Tprops) {
     <Dialog>
       <DialogTrigger 
         asChild   
-        onClick={showProduct}
+        onClick={ShowProduct}
       >
         <FaEye color="#1b80f3" size={18} />
       </DialogTrigger>

@@ -12,19 +12,22 @@ export default function Thead(){
               #
             </th>
             <th scope="col" className="px-6 py-3">
-              photo
+              image
             </th>
             <th align="center" scope="col" className="px-6 py-3">
               Titre
             </th>
             <th align="center" scope="col" className="px-6 py-3">
-              Stock
+              Prix
             </th>
             <th align="center" scope="col" className="px-6 py-3">
               Categorie
             </th>
             <th align="center" scope="col" className="px-6 py-3">
-              Action
+              Stock
+            </th>
+            <th align="center" scope="col" className="px-6 py-3">
+              Actions
             </th>
           </tr>
         </thead>
